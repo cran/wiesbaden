@@ -1,19 +1,19 @@
-## ---- include = FALSE----------------------------------------------------
+## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ----eval = FALSE--------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  library(wiesbaden)
 #  
 #  test_login(genesis=c(db='regio'))
 #  #> [1] "Sie wurden erfolgreich an- und abgemeldet."
 
-## ----eval = FALSE--------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  d <- retrieve_datalist(tableseries="141*", genesis=c(db='regio'))
 
-## ----eval = FALSE--------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  filter(d, str_detect(description, "Kreise") )
 #  #>    tablename
 #  #> 1 14111KJ001
@@ -22,10 +22,10 @@ knitr::opts_chunk$set(
 #  #> 1 Wahlberechtigte, Wahlbeteiligung, Gültige Zweitstimmen, Kreise und kreisfreie Städte, Stichtag
 #  #> 2                         Gültige Zweitstimmen, Kreise und kreisfreie Städte, Parteien, Stichtag
 
-## ----eval = FALSE--------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  data <- retrieve_data(tablename="14111KJ002", genesis=c(db='regio'))
 
-## ----eval = FALSE--------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  head(data)
 #  #>   id14111 KREISE     PART04       STAG WAHL09_val WAHL09_qual WAHL09_lock
 #  #> 1       D  01001        AFD 22.09.2013       1855           e          NA
@@ -42,7 +42,7 @@ knitr::opts_chunk$set(
 #  #> 5          0
 #  #> 6          0
 
-## ----eval = FALSE--------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  retrieve_metadata(tablename="14111KJ002", genesis=c(db='regio'))
 #  #>     name                  description   unit
 #  #> 1 WAHL09         Gültige Zweitstimmen Anzahl
@@ -50,7 +50,7 @@ knitr::opts_chunk$set(
 #  #> 3 PART04                     Parteien
 #  #> 4 KREISE Kreise und kreisfreie Städte
 
-## ----eval = FALSE--------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  retrieve_valuelabel("PART04", genesis=c(db='regio'))
 #  #>       PART04       description
 #  #> 1        AFD               AfD
