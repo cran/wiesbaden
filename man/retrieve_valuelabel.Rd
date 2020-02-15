@@ -4,8 +4,13 @@
 \alias{retrieve_valuelabel}
 \title{Retrieves Value Labels from GENESIS Databases}
 \usage{
-retrieve_valuelabel(variablename, valuelabel = "*", genesis = NULL,
-  ...)
+retrieve_valuelabel(
+  variablename,
+  valuelabel = "*",
+  genesis = NULL,
+  language = "de",
+  ...
+)
 }
 \arguments{
 \item{variablename}{name of the variable}
@@ -13,6 +18,8 @@ retrieve_valuelabel(variablename, valuelabel = "*", genesis = NULL,
 \item{valuelabel}{"*" (default) retrieves all value labels.}
 
 \item{genesis}{to authenticate a user and set the database (see below).}
+
+\item{language}{retrieve information in German "de" (default) or in English "en" if available.}
 
 \item{...}{other arguments send to the httr::GET request.}
 }
@@ -30,7 +37,7 @@ See the package description (\code{\link{wiesbaden}}) for details about setting 
  \dontrun{
  # Value labels contain for the variable 'PART04' in the table with the 
  # federal election results on the county level. 
- # Assumes that user/password are stored in ~/.genesis.json
+ # Assumes that user/password are stored via save_credentials()
  
  metadata <- retrieve_valuelabel(variablename="PART04", genesis=c(db="regio") )
  }

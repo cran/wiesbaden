@@ -4,10 +4,12 @@
 \alias{retrieve_metadata}
 \title{Retrieves Meta Data from GENESIS Databases}
 \usage{
-retrieve_metadata(tablename, genesis = NULL, ...)
+retrieve_metadata(tablename, language = "de", genesis = NULL, ...)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
+
+\item{language}{retrieve information in German "de" (default) or in English "en" if available.}
 
 \item{genesis}{to authenticate a user and set the database (see below).}
 
@@ -27,7 +29,7 @@ See the package description (\code{\link{wiesbaden}}) for details about setting 
  \dontrun{
  # Meta data contain the explanations to the variable names for the table
  # federal election results on the county level. 
- # Assumes that user/password are stored in ~/.genesis.json
+ # Assumes that user/password are stored via save_credentials()
 
  metadata <- retrieve_metadata(tablename="14111KJ002", genesis=c(db="regio") )
  }
