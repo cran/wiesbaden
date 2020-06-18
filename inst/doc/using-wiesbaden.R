@@ -7,7 +7,12 @@ knitr::opts_chunk$set(
 ## ----eval = FALSE-------------------------------------------------------------
 #  library(wiesbaden)
 #  
+#  # Assuming credentials are stored via save_credentials()
 #  test_login(genesis=c(db='regio'))
+#  #> [1] "Sie wurden erfolgreich an- und abgemeldet."
+#  
+#  # ... or supply password/username
+#  test_login(genesis=c(db='regio', user="your-username", password="your-password"))
 #  #> [1] "Sie wurden erfolgreich an- und abgemeldet."
 
 ## ----eval = FALSE-------------------------------------------------------------
