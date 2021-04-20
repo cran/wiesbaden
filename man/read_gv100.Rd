@@ -59,6 +59,6 @@ For the NAD version only:
 
 }
 \seealso{
-\url{https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html}
+\url{https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html}
 \code{\link[readr]{read_fwf}} and \code{\link[readr]{locale}}
 }
