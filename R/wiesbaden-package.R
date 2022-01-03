@@ -12,7 +12,8 @@
 #' relies on the \code{\link{keyring}} package. 
 #' 
 #' Available databases are regionalstatistik.de (shortname: "regio"), landesdatenbank.nrw.de ("nrw"), 
-#' www-genesis.destatis.de ("de") and bildungsmonitoring.de ("bm"). 
+#' www-genesis.destatis.de ("de") and bildungsmonitoring.de ("bm"), genesis.sachsen-anhalt.de ("st") and
+#' statistikdaten.bayern.de ("by").
 #' 
 #' 
 #'
@@ -21,14 +22,14 @@
 #' @docType package
 #' @aliases wiesbaden
 #' @title Client to access the data from the Federal Statistical Office, Germany
-#' @author Moritz Marbach \email{moritz.marbach@gess.ethz.ch}
+#' @author Moritz Marbach \email{moritz.marbach@tamu.edu}
 #'
 #' 
 #' @import httr 
 #' @import xml2
 #' @importFrom keyring key_set_with_value key_list key_get
-#' @importFrom stringr str_detect str_split str_replace_all str_trim
-#' @importFrom readr read_csv read_csv2 read_fwf read_delim read_file locale cols col_character
+#' @importFrom stringr str_detect str_split str_replace_all str_trim str_to_lower
+#' @importFrom readr read_csv read_csv2 read_fwf read_delim read_file read_lines locale cols col_character
 #' @importFrom stringi stri_trans_general
 #' @importFrom stats na.omit
 #' @importFrom utils read.csv2
