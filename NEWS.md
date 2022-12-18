@@ -1,5 +1,15 @@
 # wiesbaden
 
+# Version 1.2.8 (2022-12-17)
+
+* New Parameter inhalte for retrieve_data 
+* Revised help files to include tips on dealing with large tables 
+
+# Version 1.2.6 (2022-02-14)
+
+* Fixed bug in read_gv100() that let to an error when reading UTF-8 files
+* Allow to save credentials for databases from Bavaria and Saxony-Anhalt
+
 # Version 1.2.5 (2022-01-03)
 
 * Add connection to databases from Bavaria and Saxony-Anhalt

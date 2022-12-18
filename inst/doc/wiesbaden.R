@@ -5,6 +5,7 @@ knitr::opts_chunk$set(
 )
 
 ## ----eval = FALSE-------------------------------------------------------------
+#  library(tidyverse)
 #  library(wiesbaden)
 #  
 #  # Assuming credentials are stored via save_credentials()
