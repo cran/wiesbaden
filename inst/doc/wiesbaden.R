@@ -5,7 +5,6 @@ knitr::opts_chunk$set(
 )
 
 ## ----eval = FALSE-------------------------------------------------------------
-#  library(tidyverse)
 #  library(wiesbaden)
 #  
 #  # Assuming credentials are stored via save_credentials()
@@ -20,7 +19,7 @@ knitr::opts_chunk$set(
 #  d <- retrieve_datalist(tableseries="141*", genesis=c(db='regio'))
 
 ## ----eval = FALSE-------------------------------------------------------------
-#  filter(d, str_detect(description, "Kreise") )
+#  subset(d, grepl("Kreise", description))
 #  #>    tablename
 #  #> 1 14111KJ001
 #  #> 2 14111KJ002

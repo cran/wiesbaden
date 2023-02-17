@@ -1,7 +1,6 @@
 Package: wiesbaden
 Title: Access Databases from the Federal Statistical Office of Germany
-Version: 1.2.8
-Date: 2022-12-17
+Version: 1.2.9
 Author: Moritz Marbach <m.marbach@ucl.ac.uk> [aut, cre]
 Maintainer: Moritz Marbach <m.marbach@ucl.ac.uk>
 Description: Retrieve and import data from different databases of the Federal Statistical Office of Germany (DESTATIS) using their SOAP XML web service <https://www-genesis.destatis.de/>.
@@ -14,9 +13,9 @@ Imports: httr (>= 1.2.1), xml2 (>= 1.0.0), stringr (>= 1.1.0), stringi
         (>= 1.4.0), readr (>= 1.0.0), jsonlite (>= 1.6.0), keyring (>=
         1.1.0)
 RoxygenNote: 7.2.1
-Suggests: knitr, rmarkdown, tidyverse
+Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2022-12-18 09:51:38 UTC; mmarbach
+Packaged: 2023-02-17 11:08:03 UTC; mmarbach
 Repository: CRAN
-Date/Publication: 2022-12-18 16:50:02 UTC
+Date/Publication: 2023-02-17 12:20:02 UTC

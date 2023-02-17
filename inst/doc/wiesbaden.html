@@ -12,7 +12,7 @@
 
 
 
-<title>Retrieve Data from DESTATIS via R</title>
+<title>Getting Data from DESTATIS via R</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -336,7 +336,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">Retrieve Data from DESTATIS via R</h1>
+<h1 class="title toc-ignore">Getting Data from DESTATIS via R</h1>
 
 
 
@@ -365,16 +365,15 @@ keyring package documentation.</p>
 <p>Use the function <code>test_login()</code> to check if your
 login/password combination allows you to access the respective database
 (and if the server is functioning properly).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wiesbaden)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming credentials are stored via save_credentials()</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">test_login</span>(<span class="at">genesis=</span><span class="fu">c</span>(<span class="at">db=</span><span class="st">&#39;regio&#39;</span>))</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Sie wurden erfolgreich an- und abgemeldet.&quot;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ... or supply password/username </span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">test_login</span>(<span class="at">genesis=</span><span class="fu">c</span>(<span class="at">db=</span><span class="st">&#39;regio&#39;</span>, <span class="at">user=</span><span class="st">&quot;your-username&quot;</span>, <span class="at">password=</span><span class="st">&quot;your-password&quot;</span>))</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Sie wurden erfolgreich an- und abgemeldet.&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wiesbaden)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming credentials are stored via save_credentials()</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">test_login</span>(<span class="at">genesis=</span><span class="fu">c</span>(<span class="at">db=</span><span class="st">&#39;regio&#39;</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Sie wurden erfolgreich an- und abgemeldet.&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ... or supply password/username </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">test_login</span>(<span class="at">genesis=</span><span class="fu">c</span>(<span class="at">db=</span><span class="st">&#39;regio&#39;</span>, <span class="at">user=</span><span class="st">&quot;your-username&quot;</span>, <span class="at">password=</span><span class="st">&quot;your-password&quot;</span>))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Sie wurden erfolgreich an- und abgemeldet.&quot;</span></span></code></pre></div>
 <p>The available data are organized by themes (“Themen”) and subthemes.
 To get a list of all available themes go to the respective database
 website (links above) and click on “Themen”. Each theme typically comes
@@ -390,18 +389,16 @@ This data is available in the theme “Wahlen” which has the code
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">retrieve_datalist</span>(<span class="at">tableseries=</span><span class="st">&quot;141*&quot;</span>, <span class="at">genesis=</span><span class="fu">c</span>(<span class="at">db=</span><span class="st">&#39;regio&#39;</span>)) </span></code></pre></div>
 <p>Note, we are assuming that credentials are stored via
 <code>save_credentials()</code>.</p>
-<p>Use <code>str_detect()</code> to filter cubes with a description that
+<p>Use <code>grepl</code> (or <code>str_detect()</code> from the
+<code>stringr</code> package) to filter cubes with a description that
 contains the word “Kreise” (county):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(d, <span class="fu">str_detect</span>(description, <span class="st">&quot;Kreise&quot;</span>) ) </span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(d, <span class="fu">grepl</span>(<span class="st">&quot;Kreise&quot;</span>, description)) </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    tablename</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 14111KJ001</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 14111KJ002</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                                      description</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Wahlberechtigte, Wahlbeteiligung, Gültige Zweitstimmen, Kreise und kreisfreie Städte, Stichtag</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                         Gültige Zweitstimmen, Kreise und kreisfreie Städte, Parteien, Stichtag</span></span></code></pre></div>
-<p>The functions <code>filter</code> and <code>str_detect</code> are
-from the <code>dplyr</code> and <code>stringr</code> which are made
-available through the <code>tidyverse</code> package.</p>
 <p>Having identified the correct data cube, call
 <code>retrieve_data()</code> to download the data:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">retrieve_data</span>(<span class="at">tablename=</span><span class="st">&quot;14111KJ002&quot;</span>, <span class="at">genesis=</span><span class="fu">c</span>(<span class="at">db=</span><span class="st">&#39;regio&#39;</span>)) </span></code></pre></div>
