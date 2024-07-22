@@ -18,9 +18,8 @@ save_credentials(db, user, password)
 }
 \details{
 User/password are stored in Keychain on macOS, Credential Store on Windows or Secret Service API on Linux. 
- If a user/password pair for a database already exists, it is silently replaced with the new pair.  
- This function relies on the \code{\link{keyring}}  package.
+ If a user/password pair for a database already exists, it is silently replaced with the new pair.
 }
 \seealso{
-\code{\link{wiesbaden}}, \code{\link{keyring}}
+\code{\link{wiesbaden}}, \code{\link[keyring:keyring]{keyring}}
 }
